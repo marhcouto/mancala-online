@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Mancala</title>
+</head>
+    <body>
+        <header id="header">
+            <div id="navbar">
+                <div id="placeholder-icon"> <img src="img/icon2.png" alt="Logo" class=logo> </div>
+                <button id="navbar-button-game" class="navbar-item-button">Jogo</button>
+                <button id="navbar-button-rules" class="navbar-item-button window-opener">Regras</button>
+                <button id="navbar-button-config" class="navbar-item-button window-opener">Configurações</button>
+                <button id="navbar-button-rankings" class="navbar-item-button window-opener">Tabela de Potuação</button>
+            </div>
+            <div id="navbar-login-area">
+                <button id="navbar-login-button" class="window-opener">Login</button>
+            </div>
+        </header>
+        <div id="website-body">
+            <div id="window-background"></div>
+            <div id="giveup-container">
+                <button id="giveup-button">Desistir</button>
+            </div>
+            <div id="game-board"></div>
+            <div id="message-area"></div>
+        </div>
+        <div id="configs" class="window">
+            <div class="window-header">
+                <h1 class="window-title">Configurações</h1>
+                <div role="button" id="configs-close-button" class="close-button">
+                    <img src="img/baseline_close_black_24dp.png" alt="Close button">
+                </div>
+            </div>
+            <form>
+                <div class="config-option">
+                    Servidor Remoto: 
+                    <input type="radio" id="server-dcc" value="http://twserver.alunos.dcc.fc.up.pt:8008" name="server" checked/>
+                    <label for="server-dcc">DCC</label>
+                    <input type="radio" id="server-our" value="http://twserver.alunos.dcc.fc.up.pt:9006" name="server"/>
+                    <label for="server-our">Desenvolvido</label>
+                </div>
+                <div class="config-option">
+                    Número de casas de cada jogador:
+                    <select name="house-number">
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6" selected>6</option>
+                        <option value="7">7</option>
+                    </select>
+                </div>
+                <div class="config-option">
+                    Número de sementes iniciais:
+                    <select name="init-seed-number">
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5" selected>5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="config-option">
+                    Adversário:
+                    <input type="radio" id="opponent-cpu" value="CPU" name="opponent" checked>
+                    <label for="opponent-cpu">Computador</label>
+                    <input type="radio" id="opponent-human" value="Human" name="opponent"/>
+                    <label for="opponent-human">Jogador Remoto</label>
+                </div>
+                <div class="config-option computer-specific">
+                    Nível da IA:
+                    <input type="radio" id="dificulty-easy" value="easy" name="ai-level"/>
+                    <label for="dificulty-easy">Fácil</label>
+                    <input type="radio" id="dificulty-medium" value="medium" name="ai-level" checked/>
+                    <label for="dificulty-medium">Médio</label>
+                    <input type="radio" id="dificulty-hard" value="hard" name="ai-level"/>
+                    <label for="dificulty-hard">Difícil</label>
+                </div>
+                <div class="config-option computer-specific">
+                    Jogador a começar:
+                    <input type="radio" id="radio-player-cpu" value="CPU" name="starting-player" checked/>
+                    <label for="radio-player-cpu">Computador</label>
+                    <input type="radio" value="Human" id="radio-player-human" name="starting-player"/>
+                    <label for="radio-player-human">Pessoa</label>
+                </div>
+                <button class="custom-submit close-button" id="config-save">Guardar</button>
+            </form>
+        </div>
+        <div id="login" class="window">
+            <div class="window-header">
+                <h1 class="window-title">Login</h1>
+                <div role="button" id="login-close-button" class="close-button">
+                    <img src="img/baseline_close_black_24dp.png" alt="Close button">
+                </div>
+            </div>
+            <form>
+                <div class="auth-field-div">
+                    <label class="auth-field">Nome de Utilizador:</label>
+                    <label class="auth-field">Palavra-passe:</label>
+                </div>
+                <div class="auth-field-div">
+                    <input type="text" id="login-username" class="auth-field">
+                    <input type="password" id="login-password" class="auth-field"> 
+                </div>
+                <div class="auth-submission-area">
+                    <button id="goto-register-button" class="custom-submit auth-secondary-button">Regitar-se</button>
+                    <button id="login-button" class="custom-submit auth-primary-button">Login</button>
+                </div>
+                <p id="login-error-area" class="auth-error-area"></p>
+            </form>
+        </div>
+        <div id="register" class="window">
+            <div class="window-header">
+                <h1 class="window-title">Registo</h1>
+                <div role="button" id="register-close-button" class="close-button">
+                    <img src="img/baseline_close_black_24dp.png" alt="Close button">
+                </div>
+            </div>
+            <form>
+                <div class="auth-field-div">
+                    <label class="auth-field">Nome de Utilizador:</label>
+                    <label class="auth-field">Palavra-passe:</label>
+                    <label class="auth-field">Confirmação palavra-passe:</label>
+                </div>
+                <div class="auth-field-div">
+                    <input type="text" id="register-username" name="username" class="auth-field">
+                    <input type="password" id="register-password" name="password" class="auth-field"> 
+                    <input type="password" id="register-password-confirmation" class="auth-field"> 
+                </div>
+                <div class="auth-submission-area">
+                    <button id="goto-login-button" class="custom-submit auth-secondary-button">Login</button>
+                    <button id="register-button" class="custom-submit auth-primary-button">Registar</button>
+                </div>
+                <p id="register-error-area" class="auth-error-area"></p>
+            </form>
+        </div>
+        <div id="rules" class="window">
+            <div class="window-header">
+                <h1 class="window-title">Regras</h1>
+                <div role="button" id="rules-close-button" class="close-button">
+                    <img src="img/baseline_close_black_24dp.png" alt="Close button">
+                </div>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi semper lorem hendrerit turpis cursus elementum eget non diam. Etiam mollis sem nisi, cursus molestie orci facilisis sit amet. Proin dictum tincidunt arcu at sagittis. Etiam sagittis aliquet facilisis. Nunc sit amet diam dictum eros congue tristique sit amet vel mauris. Integer finibus massa enim, et porttitor velit molestie ut. Phasellus quis leo aliquam, lacinia turpis ac, tempus elit. In in risus quis justo molestie rhoncus et vel orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque sagittis odio sem, sit amet interdum turpis malesuada ut. Phasellus venenatis, libero eu aliquam rhoncus, ante sem ultrices lorem, vitae suscipit arcu elit in dui. Mauris faucibus eu urna commodo auctor. Duis sit amet hendrerit mi. Donec eu dapibus metus, vitae consequat metus.</p>
+            <p>Etiam vel vestibulum quam. Curabitur eu augue iaculis, hendrerit diam sit amet, elementum ex. Maecenas commodo, ante a eleifend consectetur, erat sem sagittis sem, a rhoncus risus nunc vel mi. Aliquam sem lorem, tristique mattis dignissim et, lobortis at quam. Fusce vitae lacus vitae tortor aliquet tincidunt eu a dui. Nullam pulvinar purus et sollicitudin molestie. Nunc eleifend lorem a ornare sodales. Nullam tincidunt scelerisque justo, ut condimentum lectus iaculis in. Nulla a scelerisque felis. Pellentesque sit amet nulla nulla. Curabitur vel quam ac dui vehicula gravida. Morbi tristique, est sed tempus posuere, tellus nunc vehicula massa, et congue urna erat vitae diam. Proin eros nisi, dapibus non nisl in, pharetra porta nulla. Pellentesque iaculis id augue id dictum. Ut augue dui, volutpat eget ante sit amet, dignissim dictum arcu.</p>
+        </div>
+        <div id="rankings" class="window">
+            <div class="window-header">
+                <h1 class="window-title">Tabela de Classificações</h1>
+                <div role="button" id="rankings-close-button" class="close-button">
+                    <img src="img/baseline_close_black_24dp.png" alt="Close button">
+                </div>
+            </div>
+            <div id="ranking-source">
+                <div>
+                    <label for="ranking-source-local">Local</label>
+                    <input id="ranking-source-local" type="radio" name="ranking-source" value="local" checked>
+                </div>
+                <div>
+                    <label for="ranking-source-remote">Remoto</label>
+                    <input id="ranking-source-remote" type="radio" name="ranking-source" value="remote">
+                </div>
+            </div>
+            <div id="ranking-body"></div>
+        </div>
+        <script type="module" src="./index.js"></script>
+    </body>
+</html>

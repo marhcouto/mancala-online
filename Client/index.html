@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Mancala</title>
+</head>
+    <body>
+        <header id="header">
+            <div id="navbar">
+                <img src="img/icon3.png" alt="Logo" class=logo>
+                <button id="navbar-button-rules" class="window-opener">Regras</button>
+                <button id="navbar-button-config" class="window-opener">Configurações</button>
+                <button id="navbar-button-rankings" class="window-opener">Tabela de Potuação</button>
+            </div>
+            <div id="navbar-login-area">
+                <button id="navbar-login-button" class="window-opener">Login</button>
+            </div>
+        </header>
+        <div id="website-body">
+            <div id="window-background"></div>
+            <div id="giveup-container">
+                <button id="giveup-button">Desistir</button>
+            </div>
+            <div id="game-board"></div>
+            <div id="message-area"></div>
+        </div>
+        <div id="configs" class="window">
+            <div class="window-header">
+                <h1 class="window-title">Configurações</h1>
+                <div role="button" id="configs-close-button" class="close-button">
+                    <img src="img/baseline_close_black_24dp.png" alt="Close button">
+                </div>
+            </div>
+            <form>
+                <div class="config-option">
+                    Servidor Remoto: 
+                    <input type="radio" id="server-dcc" value="http://twserver.alunos.dcc.fc.up.pt:8008" name="server" checked/>
+                    <label for="server-dcc">DCC</label>
+                    <input type="radio" id="server-our" value="http://twserver.alunos.dcc.fc.up.pt:9006" name="server"/>
+                    <label for="server-our">Desenvolvido</label>
+                </div>
+                <div class="config-option">
+                    Número de casas de cada jogador:
+                    <select name="house-number">
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6" selected>6</option>
+                        <option value="7">7</option>
+                    </select>
+                </div>
+                <div class="config-option">
+                    Número de sementes iniciais:
+                    <select name="init-seed-number">
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5" selected>5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="config-option">
+                    Adversário:
+                    <input type="radio" id="opponent-cpu" value="CPU" name="opponent" checked>
+                    <label for="opponent-cpu">Computador</label>
+                    <input type="radio" id="opponent-human" value="Human" name="opponent"/>
+                    <label for="opponent-human">Jogador Remoto</label>
+                </div>
+                <div class="config-option computer-specific">
+                    Nível da IA:
+                    <input type="radio" id="dificulty-easy" value="easy" name="ai-level"/>
+                    <label for="dificulty-easy">Fácil</label>
+                    <input type="radio" id="dificulty-medium" value="medium" name="ai-level" checked/>
+                    <label for="dificulty-medium">Médio</label>
+                    <input type="radio" id="dificulty-hard" value="hard" name="ai-level"/>
+                    <label for="dificulty-hard">Difícil</label>
+                </div>
+                <div class="config-option computer-specific">
+                    Jogador a começar:
+                    <input type="radio" id="radio-player-cpu" value="CPU" name="starting-player" checked/>
+                    <label for="radio-player-cpu">Computador</label>
+                    <input type="radio" value="Human" id="radio-player-human" name="starting-player"/>
+                    <label for="radio-player-human">Pessoa</label>
+                </div>
+                <button class="custom-submit close-button auth-primary-button" id="config-save">Guardar</button>
+            </form>
+        </div>
+        <div id="login" class="window">
+            <div class="window-header">
+                <h1 class="window-title">Login</h1>
+                <div role="button" id="login-close-button" class="close-button">
+                    <img src="img/baseline_close_black_24dp.png" alt="Close button">
+                </div>
+            </div>
+            <form>
+                <div class="auth-field-div">
+                    <label class="auth-field">Nome de Utilizador:</label>
+                    <label class="auth-field">Palavra-passe:</label>
+                </div>
+                <div class="auth-field-div">
+                    <input type="text" id="login-username" class="auth-field" required="required">
+                    <input type="password" id="login-password" class="auth-field" required="required"> 
+                </div>
+                <div class="auth-submission-area">
+                    <button id="goto-register-button" class="custom-submit auth-secondary-button">Regitar-se</button>
+                    <button id="login-button" class="custom-submit auth-primary-button">Login</button>
+                </div>
+                <p id="login-error-area" class="auth-error-area"></p>
+            </form>
+        </div>
+        <div id="register" class="window">
+            <div class="window-header">
+                <h1 class="window-title">Registo</h1>
+                <div role="button" id="register-close-button" class="close-button">
+                    <img src="img/baseline_close_black_24dp.png" alt="Close button">
+                </div>
+            </div>
+            <form>
+                <div class="auth-field-div">
+                    <label class="auth-field">Nome de Utilizador:</label>
+                    <label class="auth-field">Palavra-passe:</label>
+                    <label class="auth-field">Confirmação palavra-passe:</label>
+                </div>
+                <div class="auth-field-div">
+                    <input type="text" id="register-username" name="username" class="auth-field" required="required">
+                    <input type="password" id="register-password" name="password" class="auth-field" required="required"> 
+                    <input type="password" id="register-password-confirmation" class="auth-field" required="required"> 
+                </div>
+                <div class="auth-submission-area">
+                    <button id="goto-login-button" class="custom-submit auth-secondary-button">Login</button>
+                    <button id="register-button" class="custom-submit auth-primary-button">Registar</button>
+                </div>
+                <p id="register-error-area" class="auth-error-area"></p>
+            </form>
+        </div>
+        <div id="rules" class="window">
+            <div class="window-header">
+                <h1 class="window-title">Regras</h1>
+                <div role="button" id="rules-close-button" class="close-button">
+                    <img src="img/baseline_close_black_24dp.png" alt="Close button">
+                </div>
+            </div>
+            <div id="rules-body">
+                <h1>Introdução</h1>
+                <p>Mancala é um jogo jogado num tabuleiro tipicamente com 6 casas para cada jogador e 5 sementes em cada casa</p>
+                <h1>Como semear?</h1>
+                <p>O utilizador, quando for a sua vez, deve selecionar uma casa. Em seguida, todas as sementes que existiam nessa casa são distribuidas em sentido anti-horario saltando a casa de captura adversária</p>
+                <h1>Quando jogar?</h1>
+                <p>Em geral os turnos são alternados entre o adversário e o jogador a não ser que a semeadura termine na casa de captura do jogador atual. Nesse caso este deve jogar mais uma vez.</p>
+                <h1>Final de jogo</h1>
+                <p>O jogo acaba imediatamente quando um dos jogadores já não possui sementes do seu lado do tabuleiro.</p>
+            </div>
+        </div>
+        <div id="rankings" class="window">
+            <div class="window-header">
+                <h1 class="window-title">Tabela de Classificações</h1>
+                <div role="button" id="rankings-close-button" class="close-button">
+                    <img src="img/baseline_close_black_24dp.png" alt="Close button">
+                </div>
+            </div>
+            <div id="ranking-source">
+                <div>
+                    <label for="ranking-source-local">Local</label>
+                    <input id="ranking-source-local" type="radio" name="ranking-source" value="local" checked>
+                </div>
+                <div>
+                    <label for="ranking-source-remote">Remoto</label>
+                    <input id="ranking-source-remote" type="radio" name="ranking-source" value="remote">
+                </div>
+            </div>
+            <div id="ranking-body"></div>
+        </div>
+        <script type="module" src="./index.js"></script>
+    </body>
+</html>
