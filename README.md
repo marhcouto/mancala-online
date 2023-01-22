@@ -1,11 +1,21 @@
-# FEUP-LTW-21/22
+# LTW: MANCALA
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Description
+O objetivo deste projeto era desenvolver uma aplicação web que possibilitasse ao utilizador jogar Mancala contra uma AI ou em modo multi jogador. A aplicação web deveria ser single-page e o mutlti-jogador será prestado por um servidor em Node.js.
+O website possibilita a vista das intruções, alteração das configurações do jogo, ranking local e remoto, bem como registro neste. Em modo de jogador pode ainda escolher jogar contra AIs de diferentes niveis de dificuldade. 
 
-**COURSE:** [Object-Oriented Programming Laboratory](https://sigarra.up.pt/feup/pt/ucurr_geral.ficha_uc_view?pv_ocorrencia_id=484427) (LTW)
+# Preview
+<p align = "center">
+  <img width = 650 src = "img/Screenshot.png">
+</p>
 
-**CONTENTS:** 
-- Project developped for the course.
+# Results
+O projeto vai de encontro ao pretendido, sendo possivel realizar todas as ações previstas no ínicio do projeto.
 
-**FINAL GRADE:** 17
+**GRADE:** 18.6
 
+# Authors
+Name | UP | Git Username |
+-----|----|--------------|
+Marcelo Couto | 201906086 | [marhcouto](https://github.com/marhcouto)
+Francisco Oliveira | 201907361 | [frpdoliv](https://github.com/frpdoliv)
